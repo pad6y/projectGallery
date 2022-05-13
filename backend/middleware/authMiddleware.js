@@ -41,14 +41,13 @@ const checkPermission = asyncHandler(async (req, res, next) => {
     throw new Error('Project not found');
   }
 
-  const user = await User.findById(req.user.id);
   //Check for user
-  if (!user) {
+  if (!req.user) {
     res.status(401);
     throw new Error('User not found');
   }
   //Check logged in user matches project creator
-  if (user.id !== foundProject.user.toString()) {
+  if (req.user.id !== foundProject.user.toString()) {
     res.status(401);
     throw new Error('You dont have permission to alter or delete this project');
   }
