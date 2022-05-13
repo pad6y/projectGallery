@@ -1,6 +1,8 @@
 const asyncHandler = require('express-async-handler');
 
 const Project = require('../models/projectModel');
+const User = require('../models/userModel');
+
 // @Desc Get projects
 // @route GET /api/projects
 // @access private
@@ -20,7 +22,13 @@ const createProject = asyncHandler(async (req, res) => {
     throw new Error('Missing title or description');
   }
 
-  const newProject = await Project.create({ title, description, git_url, url });
+  const newProject = await Project.create({
+    user: req.user._id,
+    title,
+    description,
+    git_url,
+    url,
+  });
 
   // Project.save(newProject);
   res.status(200).json({ newProject });
@@ -30,17 +38,13 @@ const createProject = asyncHandler(async (req, res) => {
 // @route PUT /api/projects/:id
 // @access private
 const updateProject = asyncHandler(async (req, res) => {
-  const id = req.params.id;
-  const foundProject = await Project.findById(id);
-
-  if (!foundProject) {
-    res.status(400);
-    throw new Error('Project not found');
-  }
-
-  const updatedProject = await Project.findByIdAndUpdate(id, req.body, {
-    new: true,
-  });
+  const updatedProject = await Project.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    {
+      new: true,
+    }
+  );
 
   res.status(200).json({ updatedProject });
 });
@@ -49,13 +53,7 @@ const updateProject = asyncHandler(async (req, res) => {
 // @route DELETE /api/projects/:id
 // @access private
 const deleteProject = asyncHandler(async (req, res) => {
-  const id = req.params.id;
-  const foundProject = await Project.findById(id);
-
-  if (!foundProject) {
-    res.status(400);
-    throw new Error('Project not found');
-  }
+  const foundProject = await Project.findById(req.params.id);
 
   await foundProject.remove();
 
