@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { login, reset } from '../features/auth/authSlice';
-import Spinner from '../component/LoadingSpinner';
+import LoadingSpinner from '../component/LoadingSpinner';
+import Card from '../component/UI/Card';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -43,16 +44,11 @@ function Login() {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    const userData = {
-      email,
-      password,
-    };
-
-    dispatch(login(userData));
+    dispatch(login(formData));
   };
 
   if (isLoading) {
-    return <Spinner />;
+    return <LoadingSpinner />;
   }
 
   return (
@@ -65,35 +61,37 @@ function Login() {
       </section>
 
       <section className="form">
-        <form onSubmit={onSubmit}>
-          <div className="form-group">
-            <input
-              type="email"
-              className="form-control"
-              placeholder="Enter your email"
-              id="email"
-              name="email"
-              value={email}
-              onChange={onChange}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Enter your password"
-              id="password"
-              name="password"
-              value={password}
-              onChange={onChange}
-            />
-          </div>
-          <div className="form-group">
-            <button type="submit" className="btn btn-block">
-              Login
-            </button>
-          </div>
-        </form>
+        <Card>
+          <form onSubmit={onSubmit}>
+            <div className="form-group">
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Enter your email"
+                id="email"
+                name="email"
+                value={email}
+                onChange={onChange}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Enter your password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={onChange}
+              />
+            </div>
+            <div className="form-group">
+              <button type="submit" className="btn btn-block">
+                Login
+              </button>
+            </div>
+          </form>
+        </Card>
       </section>
     </>
   );
