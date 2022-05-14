@@ -122,7 +122,10 @@ h3 {
   background: none;
 }
 
-.form,
+.form {
+  width: 55%;
+  margin: 0 auto;
+}
 .content {
   width: 70%;
   margin: 0 auto;
