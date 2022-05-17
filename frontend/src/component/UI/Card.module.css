@@ -1,0 +1,23 @@
+.card {
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  overflow: hidden;
+  background: white;
+}
+
+.card_heading {
+  background: rgb(38, 38, 38);
+  color: white;
+  padding: 1.6rem 0;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.2rem;
+}
+
+.project {
+  background: rgb(102, 68, 236);
+  margin-bottom: 0;
+}
+
+.card_content {
+  padding: 1rem;
+}

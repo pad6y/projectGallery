@@ -19,8 +19,20 @@ const createProject = async (projectData, token) => {
   return response.data;
 };
 
+//Retrieve all projects
+const getProjects = async () => {
+  const response = await axios.get(API_URL);
+
+  if (!response.data) {
+    toast.error('Failed to retrieve projects');
+  }
+
+  return response.data.projects;
+};
+
 const projectService = {
   createProject,
+  getProjects,
 };
 
 export default projectService;

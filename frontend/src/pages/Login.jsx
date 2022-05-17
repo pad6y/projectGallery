@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { login, reset } from '../features/auth/authSlice';
 import LoadingSpinner from '../component/LoadingSpinner';
 import Card from '../component/UI/Card';
+import Button from '../component/UI/Button';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -57,11 +58,10 @@ function Login() {
         <h1 className="center mr">
           <FaSignInAlt className="sm-side-margin" /> LOGIN
         </h1>
-        <p>Please Sign In</p>
       </section>
 
       <section className="form">
-        <Card>
+        <Card heading="Login">
           <form onSubmit={onSubmit}>
             <div className="form-group">
               <input
@@ -86,9 +86,7 @@ function Login() {
               />
             </div>
             <div className="form-group">
-              <button type="submit" className="btn btn-block">
-                Login
-              </button>
+              <Button type="submit">Login</Button>
             </div>
           </form>
         </Card>

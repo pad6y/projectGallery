@@ -49,7 +49,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
   if (!user) {
     res.status(400);
-    throw new Error('User entered values and try again');
+    throw new Error('Check you login credentials and try again');
   }
 
   if (user && (await bcrypt.compare(password, user.password))) {

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { createProject, reset } from '../features/projects/projectSlice';
 
 import Card from './UI/Card';
+import Button from './UI/Button';
 
 function ProjectForm() {
   const [formData, setFormData] = useState({
@@ -42,8 +43,7 @@ function ProjectForm() {
   return (
     <section className="form">
       {user && (
-        <Card>
-          <p className="mb">Add Project Card</p>
+        <Card heading="Add Project Card">
           <form onSubmit={onSubmit}>
             <div className="form-group">
               <input
@@ -71,7 +71,7 @@ function ProjectForm() {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter project name"
+                placeholder="Enter Git Repo (optional)"
                 id="git_url"
                 name="git_url"
                 value={git_url}
@@ -82,16 +82,14 @@ function ProjectForm() {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter project name"
+                placeholder="Enter URL for project (optional)"
                 id="url"
                 name="url"
                 value={url}
                 onChange={onChange}
               />
             </div>
-            <button type="submit" className="btn btn-block">
-              Submit
-            </button>
+            <Button type="submit">Submit</Button>
           </form>
         </Card>
       )}

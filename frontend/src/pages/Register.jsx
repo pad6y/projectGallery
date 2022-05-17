@@ -6,6 +6,7 @@ import { FaUser } from 'react-icons/fa';
 import { register, reset } from '../features/auth/authSlice';
 import Spinner from '../component/LoadingSpinner';
 import Card from '../component/UI/Card';
+import Button from '../component/UI/Button';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -69,11 +70,10 @@ function Register() {
           <FaUser className="sm-side-margin" />
           Register
         </h1>
-        <p>Please create an account</p>
       </section>
 
       <section className="form">
-        <Card>
+        <Card heading="Sign Up">
           <form onSubmit={onSubmit}>
             <div className="form-group">
               <input
@@ -120,9 +120,7 @@ function Register() {
               />
             </div>
             <div className="form-group">
-              <button type="submit" className="btn btn-block">
-                Submit
-              </button>
+              <Button type="submit">Submit</Button>
             </div>
           </form>
         </Card>
