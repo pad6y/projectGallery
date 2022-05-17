@@ -2,6 +2,7 @@ import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout, reset } from '../features/auth/authSlice';
+import NavBar from './NavBar';
 import Button from './UI/Button';
 
 function Header() {
@@ -16,33 +17,36 @@ function Header() {
   };
 
   return (
-    <header className="header">
-      <div className="logo">
-        <Link to="/">Pad6Y Projects</Link>
-      </div>
-      <ul>
-        {user ? (
-          <li>
-            <Button onClick={onLogout}>
-              <FaSignOutAlt /> Logout
-            </Button>
-          </li>
-        ) : (
-          <>
+    <>
+      <header className="header">
+        <div className="logo">
+          <Link to="/">Pad6Y Projects</Link>
+        </div>
+        <ul>
+          {user ? (
             <li>
-              <Link to="/login">
-                <FaSignInAlt /> Login
-              </Link>
+              <Button onClick={onLogout}>
+                <FaSignOutAlt /> Logout
+              </Button>
             </li>
-            <li>
-              <Link to="/register">
-                <FaUser /> Register
-              </Link>
-            </li>
-          </>
-        )}
-      </ul>
-    </header>
+          ) : (
+            <>
+              <li>
+                <Link to="/login">
+                  <FaSignInAlt /> Login
+                </Link>
+              </li>
+              <li>
+                <Link to="/register">
+                  <FaUser /> Register
+                </Link>
+              </li>
+            </>
+          )}
+        </ul>
+      </header>
+      {user && <NavBar />}
+    </>
   );
 }
 export default Header;

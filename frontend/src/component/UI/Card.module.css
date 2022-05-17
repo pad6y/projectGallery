@@ -11,10 +11,15 @@
   padding: 1.6rem 0;
   margin-bottom: 1.5rem;
   letter-spacing: 0.2rem;
+  text-transform: uppercase;
 }
 
 .project {
-  background: rgb(102, 68, 236);
+  background-image: linear-gradient(
+    to right,
+    rgb(100, 78, 180),
+    rgb(102, 68, 236)
+  );
   margin-bottom: 0;
 }
 

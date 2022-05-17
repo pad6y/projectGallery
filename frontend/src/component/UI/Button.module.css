@@ -37,3 +37,12 @@
   background: #fff;
   color: #000;
 }
+
+.delete {
+  background-color: red;
+  border: 1px solid red;
+}
+
+.delete:hover {
+  color: red;
+}

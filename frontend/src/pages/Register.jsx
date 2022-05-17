@@ -65,15 +65,15 @@ function Register() {
 
   return (
     <>
-      <section className="heading">
-        <h1 className="center mr">
-          <FaUser className="sm-side-margin" />
-          Register
-        </h1>
-      </section>
-
       <section className="form">
-        <Card heading="Sign Up">
+        <Card
+          heading={
+            <h1 className="center mr">
+              <FaUser className="sm-side-margin" />
+              Register
+            </h1>
+          }
+        >
           <form onSubmit={onSubmit}>
             <div className="form-group">
               <input

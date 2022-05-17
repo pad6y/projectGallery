@@ -1,0 +1,22 @@
+.footer {
+  width: 100%;
+  background-color: rgb(38, 38, 38);
+  color: #fff;
+  padding: 2rem;
+  margin-top: 2.5rem;
+}
+
+.footer_container {
+  display: flex;
+  justify-content: center;
+}
+.icons_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.icons_container a {
+  color: rgb(102, 68, 236);
+  font-size: 1.5rem;
+  margin: 0.5rem;
+}

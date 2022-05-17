@@ -5,7 +5,7 @@ import { createProject, reset } from '../features/projects/projectSlice';
 import Card from './UI/Card';
 import Button from './UI/Button';
 
-function ProjectForm() {
+function ProjectForm(props) {
   const [formData, setFormData] = useState({
     user: '',
     title: '',
@@ -43,7 +43,7 @@ function ProjectForm() {
   return (
     <section className="form">
       {user && (
-        <Card heading="Add Project Card">
+        <Card>
           <form onSubmit={onSubmit}>
             <div className="form-group">
               <input

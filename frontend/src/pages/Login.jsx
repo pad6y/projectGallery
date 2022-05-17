@@ -54,14 +54,14 @@ function Login() {
 
   return (
     <>
-      <section className="heading">
-        <h1 className="center mr">
-          <FaSignInAlt className="sm-side-margin" /> LOGIN
-        </h1>
-      </section>
-
       <section className="form">
-        <Card heading="Login">
+        <Card
+          heading={
+            <h1 className="center mr">
+              <FaSignInAlt className="sm-side-margin" /> LOGIN
+            </h1>
+          }
+        >
           <form onSubmit={onSubmit}>
             <div className="form-group">
               <input

@@ -7,9 +7,17 @@ const User = require('../models/userModel');
 // @route GET /api/projects
 // @access private
 const getProjects = asyncHandler(async (req, res) => {
+  // const owner = await User.findOne({ email: process.env.MY_ACC });
+
+  // let projects;
+  // if (owner) {
+  //   projects = await Project.find({ user: owner._id });
+  // } else {
+  //   projects = await Project.find();
+  // }
   const projects = await Project.find();
 
-  res.status(200).json({ projects });
+  res.status(200).json(projects);
 });
 
 // @Desc CREATE project

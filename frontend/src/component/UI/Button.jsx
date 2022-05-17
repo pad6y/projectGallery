@@ -1,6 +1,6 @@
 import styles from './Button.module.css';
 
-function Button({ type, className, children, onClick, disabled }) {
+function Button({ type, className, children, onClick }) {
   return (
     <button
       type={type}

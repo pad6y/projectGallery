@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { getProjects, reset } from '../features/projects/projectSlice';
-import ProjectForm from '../component/ProjectForm';
+
 import ProjectItem from '../component/ProjectItem';
 import LoadingSpinner from '../component/LoadingSpinner';
 
@@ -30,17 +30,13 @@ function Dashboard() {
   if (isLoading) {
     return <LoadingSpinner />;
   }
-  console.log(projects);
+
   return (
     <>
       <section className="heading">
         <h1>Welcome</h1>
-        <p>Project Dashboard</p>
+        <p>Portfolio Dashboard</p>
       </section>
-
-      <div className="mb">
-        <ProjectForm />
-      </div>
 
       <section className="content">
         {projects.length > 0 ? (
