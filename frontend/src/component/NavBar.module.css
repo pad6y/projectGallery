@@ -2,7 +2,7 @@
   display: flex;
   justify-content: flex-end;
   background-image: linear-gradient(
-    to right,
+    to left,
     rgb(178, 169, 212),
     rgb(102, 68, 236)
   );

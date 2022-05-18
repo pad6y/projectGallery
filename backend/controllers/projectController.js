@@ -10,14 +10,24 @@ const getProjects = asyncHandler(async (req, res) => {
   // const owner = await User.findOne({ email: process.env.MY_ACC });
 
   // let projects;
-  // if (owner) {
-  //   projects = await Project.find({ user: owner._id });
+  // if (req.user.id) {
+  //   projects = await Project.find({ user: req.user.id });
+  //   return res.status(200).json(projects);
   // } else {
-  //   projects = await Project.find();
+  //   projects = await Project.find({ user: owner._id });
+  //   return res.status(200).json(projects);
   // }
   const projects = await Project.find();
 
   res.status(200).json(projects);
+});
+// @Desc Get projects
+// @route GET /api/projects
+// @access private
+const getProject = asyncHandler(async (req, res) => {
+  const project = await Project.findOne({ _id: req.params.id });
+
+  res.status(200).json(project);
 });
 
 // @Desc CREATE project
@@ -54,7 +64,7 @@ const updateProject = asyncHandler(async (req, res) => {
     }
   );
 
-  res.status(200).json({ updatedProject });
+  res.status(200).json(updatedProject);
 });
 
 // @Desc del project
@@ -68,4 +78,10 @@ const deleteProject = asyncHandler(async (req, res) => {
   res.status(200).json({ id: req.params.id });
 });
 
-module.exports = { getProjects, createProject, updateProject, deleteProject };
+module.exports = {
+  getProject,
+  getProjects,
+  createProject,
+  updateProject,
+  deleteProject,
+};

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { createProject, reset } from '../features/projects/projectSlice';
 
@@ -18,6 +19,7 @@ function ProjectForm(props) {
 
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -29,6 +31,7 @@ function ProjectForm(props) {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    console.log('pressed');
     dispatch(createProject(formData));
     dispatch(reset());
     setFormData(() => ({
@@ -38,61 +41,68 @@ function ProjectForm(props) {
       git_url: '',
       url: '',
     }));
+    navigate('/');
   };
 
   return (
     <section className="form">
-      {user && (
-        <Card>
-          <form onSubmit={onSubmit}>
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter project name"
-                id="title"
-                name="title"
-                value={title}
-                onChange={onChange}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter project description"
-                id="description"
-                name="description"
-                value={description}
-                onChange={onChange}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter Git Repo (optional)"
-                id="git_url"
-                name="git_url"
-                value={git_url}
-                onChange={onChange}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter URL for project (optional)"
-                id="url"
-                name="url"
-                value={url}
-                onChange={onChange}
-              />
-            </div>
-            <Button type="submit">Submit</Button>
-          </form>
-        </Card>
-      )}
+      {/* {user && ( */}
+      <Card>
+        <form onSubmit={onSubmit}>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter project name"
+              id="title"
+              name="title"
+              value={title}
+              onChange={onChange}
+              disabled={!user ? true : false}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter project description"
+              id="description"
+              name="description"
+              value={description}
+              onChange={onChange}
+              disabled={!user ? true : false}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter Git Repo (optional)"
+              id="git_url"
+              name="git_url"
+              value={git_url}
+              onChange={onChange}
+              disabled={!user ? true : false}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter URL for project (optional)"
+              id="url"
+              name="url"
+              value={url}
+              onChange={onChange}
+              disabled={!user ? true : false}
+            />
+          </div>
+          <Button type="submit" disabled={!user ? true : false}>
+            Submit
+          </Button>
+        </form>
+      </Card>
+      {/* )} */}
     </section>
   );
 }

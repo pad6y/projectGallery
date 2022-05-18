@@ -6,7 +6,7 @@ function Card({ heading, projectHead, children }) {
   if (heading)
     content = (
       <>
-        <h2 className={styles.card_heading}>{heading}</h2>
+        <div className={styles.card_heading}>{heading}</div>
         <div className={styles.card_content}>{children}</div>
       </>
     );
@@ -14,9 +14,9 @@ function Card({ heading, projectHead, children }) {
   if (projectHead)
     content = (
       <>
-        <h2 className={`${styles.card_heading} ${styles.project}`}>
+        <div className={`${styles.card_heading} ${styles.project}`}>
           {projectHead}
-        </h2>
+        </div>
         <div className={styles.card_content}>{children}</div>
       </>
     );

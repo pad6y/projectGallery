@@ -45,7 +45,7 @@ function Header() {
           )}
         </ul>
       </header>
-      {user && <NavBar />}
+      <NavBar />
     </>
   );
 }

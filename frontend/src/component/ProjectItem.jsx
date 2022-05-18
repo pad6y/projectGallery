@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { deleteProject } from '../features/projects/projectSlice';
 import Card from '../component/UI/Card';
 import Button from '../component/UI/Button';
@@ -30,6 +31,14 @@ function ProjectItem({ project }) {
         <a href={`${url}`} target="_blank" rel="noopener noreferrer">
           <Button type="button">Live Project</Button>
         </a>
+      ) : null}
+
+      {user && user._id === project.user ? (
+        <Link to={`/${project._id}/edit`}>
+          <Button type="button" className="edit">
+            Edit Project
+          </Button>
+        </Link>
       ) : null}
 
       {user && user._id === project.user ? (

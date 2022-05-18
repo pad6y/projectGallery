@@ -7,6 +7,7 @@ import DashBoard from './pages/Dashboard';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Create from './pages/Create';
+import Edit from './pages/Edit';
 import Unavailable from './component/Unavailable';
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/create" element={<Create />} />
             <Route path="/blog" element={<Unavailable />} />
-            <Route path="/contact" element={<Unavailable />} />
+            <Route path="/:id/edit" element={<Edit />} />
           </Routes>
         </div>
         <Footer />

@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import projectService from './projectService';
 
 const initialState = {
+  project: null,
   projects: [],
   isError: false,
   isSuccess: false,
@@ -31,9 +32,46 @@ export const createProject = createAsyncThunk(
 //Get All Projects
 export const getProjects = createAsyncThunk(
   'projects/getAll',
-  async (user_id, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
       return await projectService.getProjects();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+//Get specific Projects
+export const getProject = createAsyncThunk(
+  'projects/getProject',
+  async (project_id, thunkAPI) => {
+    try {
+      return await projectService.getProject(project_id);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+//Edit project
+export const editProject = createAsyncThunk(
+  'projects/edit',
+  async (projectData, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await projectService.editProject(projectData, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -87,6 +125,19 @@ export const projectSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
+      .addCase(getProject.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getProject.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.project = action.payload;
+      })
+      .addCase(getProject.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
       .addCase(getProjects.pending, (state) => {
         state.isLoading = true;
       })
@@ -96,6 +147,24 @@ export const projectSlice = createSlice({
         state.projects = action.payload;
       })
       .addCase(getProjects.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(editProject.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(editProject.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.projects = [
+          ...state.projects.filter(
+            (project) => project._id !== action.payload._id
+          ),
+          action.payload,
+        ];
+      })
+      .addCase(editProject.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

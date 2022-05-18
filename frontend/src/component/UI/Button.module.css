@@ -46,3 +46,12 @@
 .delete:hover {
   color: red;
 }
+
+.edit {
+  background-color: orange;
+  border: 1px solid orange;
+}
+
+.edit:hover {
+  color: orange;
+}

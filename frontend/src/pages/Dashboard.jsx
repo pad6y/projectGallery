@@ -39,15 +39,14 @@ function Dashboard() {
       </section>
 
       <section className="content">
-        {projects.length > 0 ? (
+        {projects.length > 0 && (
           <div className="projects">
             {projects.map((project) => (
               <ProjectItem key={project._id} project={project} />
             ))}
           </div>
-        ) : (
-          <h3>Currently no projects to view</h3>
         )}
+        {projects.length === 0 && <h3>Currently no projects to view</h3>}
       </section>
     </>
   );
