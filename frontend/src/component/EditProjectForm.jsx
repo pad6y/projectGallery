@@ -67,7 +67,7 @@ function EditProjectForm() {
       url: '',
     }));
 
-    navigate('/');
+    navigate('/myprojects');
   };
 
   return (

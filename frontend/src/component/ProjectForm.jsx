@@ -31,7 +31,6 @@ function ProjectForm(props) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('pressed');
     dispatch(createProject(formData));
     dispatch(reset());
     setFormData(() => ({
@@ -41,7 +40,7 @@ function ProjectForm(props) {
       git_url: '',
       url: '',
     }));
-    navigate('/');
+    navigate('/myprojects');
   };
 
   return (

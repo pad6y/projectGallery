@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Create from './pages/Create';
 import Edit from './pages/Edit';
+import UserProjects from './pages/UserProjects';
 import Unavailable from './component/Unavailable';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="/create" element={<Create />} />
             <Route path="/blog" element={<Unavailable />} />
             <Route path="/:id/edit" element={<Edit />} />
+            <Route path="/myprojects" element={<UserProjects />} />
           </Routes>
         </div>
         <Footer />

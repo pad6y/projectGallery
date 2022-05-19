@@ -29,6 +29,16 @@ const getProject = async (projectId) => {
 
   return response.data;
 };
+//Retrieve specific user projects
+const userProjects = async (userId) => {
+  const response = await axios.get(`${API_URL}${userId}/user`);
+
+  if (!response.data) {
+    toast.error('Failed to retrieve user project');
+  }
+
+  return response.data;
+};
 
 //Retrieve all projects
 const getProjects = async () => {
@@ -85,6 +95,7 @@ const projectService = {
   createProject,
   getProject,
   getProjects,
+  userProjects,
   editProject,
   deleteProject,
 };

@@ -65,6 +65,24 @@ export const getProject = createAsyncThunk(
     }
   }
 );
+//Get Specific Users Projects
+export const userProjects = createAsyncThunk(
+  'projects/userProjects',
+  async (user_id, thunkAPI) => {
+    try {
+      return await projectService.userProjects(user_id);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 //Edit project
 export const editProject = createAsyncThunk(
   'projects/edit',
@@ -147,6 +165,19 @@ export const projectSlice = createSlice({
         state.projects = action.payload;
       })
       .addCase(getProjects.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(userProjects.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(userProjects.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.projects = action.payload;
+      })
+      .addCase(userProjects.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

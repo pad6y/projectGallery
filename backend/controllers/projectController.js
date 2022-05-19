@@ -7,21 +7,22 @@ const User = require('../models/userModel');
 // @route GET /api/projects
 // @access private
 const getProjects = asyncHandler(async (req, res) => {
-  // const owner = await User.findOne({ email: process.env.MY_ACC });
+  const owner = await User.findOne({ email: process.env.MY_ACC });
 
-  // let projects;
-  // if (req.user.id) {
-  //   projects = await Project.find({ user: req.user.id });
-  //   return res.status(200).json(projects);
-  // } else {
-  //   projects = await Project.find({ user: owner._id });
-  //   return res.status(200).json(projects);
-  // }
-  const projects = await Project.find();
+  const projects = await Project.find({ user: owner._id });
+
+  // const projects = await Project.find();
 
   res.status(200).json(projects);
 });
-// @Desc Get projects
+const getUserProjects = asyncHandler(async (req, res) => {
+  const user = req.params.userId;
+  console.log(user);
+  const userProjects = await Project.find({ user: user });
+  console.log(userProjects);
+  res.status(200).json(userProjects);
+});
+// @Desc Get specific project
 // @route GET /api/projects
 // @access private
 const getProject = asyncHandler(async (req, res) => {
@@ -81,6 +82,7 @@ const deleteProject = asyncHandler(async (req, res) => {
 module.exports = {
   getProject,
   getProjects,
+  getUserProjects,
   createProject,
   updateProject,
   deleteProject,

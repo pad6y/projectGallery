@@ -15,6 +15,9 @@ function NavBar() {
         <li className={styles.nav_item}>
           <Link to="/blog">BLOG</Link>
         </li>
+        <li className={styles.nav_item}>
+          <Link to="/myprojects">MY PROJECTS</Link>
+        </li>
       </ul>
     </nav>
   );

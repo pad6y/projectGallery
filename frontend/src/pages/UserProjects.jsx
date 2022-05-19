@@ -1,16 +1,13 @@
 import { useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { userProjects, reset } from '../features/projects/projectSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { getProjects, reset } from '../features/projects/projectSlice';
-
 import ProjectItem from '../component/ProjectItem';
 import LoadingSpinner from '../component/LoadingSpinner';
 
-function Dashboard() {
-  // const navigate = useNavigate();
+function UserProjects() {
   const dispatch = useDispatch();
-
+  const { user } = useSelector((state) => state.auth);
   const { projects, isLoading, isError, message } = useSelector(
     (state) => state.projects
   );
@@ -19,13 +16,12 @@ function Dashboard() {
     if (isError) {
       toast.error(message);
     }
-
-    dispatch(getProjects());
+    dispatch(userProjects(user._id));
 
     return () => {
       dispatch(reset());
     };
-  }, [isError, dispatch, message]);
+  }, [isError, message, user, dispatch]);
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -34,7 +30,7 @@ function Dashboard() {
   return (
     <>
       <section className="heading">
-        <h1 className="border_b">Welcome Pad6y's Project Gallery</h1>
+        <h3 className="border_b">Welcome {user.name}'s Project's Gallery</h3>
       </section>
 
       <section className="content">
@@ -50,5 +46,4 @@ function Dashboard() {
     </>
   );
 }
-
-export default Dashboard;
+export default UserProjects;
