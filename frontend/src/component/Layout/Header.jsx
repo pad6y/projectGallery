@@ -5,6 +5,8 @@ import { logout, reset } from '../../features/auth/authSlice';
 import NavBar from './NavBar';
 import Button from '../UI/Button';
 
+import styles from './Header.module.css';
+
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -18,7 +20,7 @@ function Header() {
 
   return (
     <>
-      <header className="header">
+      <header className={styles.header}>
         <div className="logo">
           <Link to="/">Pad6Y Projects</Link>
         </div>

@@ -8,7 +8,7 @@ const User = require('../models/userModel');
 // @route Get /api/admin/allUsers
 // @access public
 const getAllUsers = asyncHandler(async (req, res) => {
-  const allUser = await User.find();
+  const allUser = await User.find().select('-password');
 
   if (!allUser) {
     res.status(400);

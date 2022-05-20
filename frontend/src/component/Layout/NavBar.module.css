@@ -10,6 +10,16 @@
   margin-bottom: 2rem;
 }
 
+nav ul:last-child {
+  padding-right: 7.5rem;
+}
+
+@media (max-width: 768px) {
+  nav ul:last-child {
+    padding-right: 0;
+  }
+}
+
 @media (max-width: 768px) {
   .nav_container {
     justify-content: space-around;

@@ -58,6 +58,12 @@ h3 {
   text-align: center;
 }
 
+@media (max-width: 540px) {
+  .container {
+    padding: 0;
+  }
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -75,6 +81,13 @@ h3 {
 .mb {
   margin-bottom: 4rem;
 }
+
+@media (max-width: 412px) {
+  .mb {
+    margin-bottom: 1rem;
+  }
+}
+
 .small_mb {
   margin-bottom: 2rem;
 }
@@ -84,43 +97,17 @@ h3 {
   border-bottom: 1px solid var(--text-grey-light);
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--text-grey-light);
-  margin-bottom: 1rem;
-}
-
-.header ul {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.header ul li {
-  margin-left: 20px;
-}
-
-.header ul li a {
-  display: flex;
-  align-items: center;
-}
-
-.header ul li a:hover {
-  color: #777;
-}
-
-.header ul li a svg {
-  margin-right: 5px;
-}
-
 .heading {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 50px;
   padding: 0 20px;
+}
+
+@media (max-width: 412px) {
+  .heading {
+    padding: 0;
+  }
 }
 
 .heading p {
@@ -151,6 +138,18 @@ h3 {
   width: 55%;
   margin: 0 auto;
 }
+
+@media (max-width: 768px) {
+  .form {
+    width: 80%;
+  }
+}
+@media (max-width: 412px) {
+  .form {
+    width: 100%;
+  }
+}
+
 .content {
   width: 90%;
   margin: 0 auto;
@@ -162,7 +161,7 @@ h3 {
   }
 }
 
-@media (max-width: 510px) {
+@media (max-width: 540px) {
   .content {
     width: 100%;
   }
