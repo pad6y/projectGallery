@@ -3,8 +3,8 @@
   justify-content: flex-end;
   background-image: linear-gradient(
     to left,
-    rgb(178, 169, 212),
-    rgb(102, 68, 236)
+    var(--primary-purple-light),
+    var(--primary-purple)
   );
   padding: 1rem 0;
   margin-bottom: 2rem;
@@ -19,7 +19,7 @@
 .nav_item a {
   margin-right: 1.4rem;
   padding-bottom: 0.2rem;
-  color: black;
+  color: var(--text-black);
   border-bottom: 2px solid transparent;
 }
 
@@ -30,6 +30,6 @@
 }
 
 .nav_item a:hover {
-  border-bottom: 2px solid white;
-  color: white;
+  border-bottom: 2px solid var(--text-light);
+  color: var(--text-light);
 }

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { createProject, reset } from '../features/projects/projectSlice';
+import { createProject, reset } from '../../features/projects/projectSlice';
 
-import Card from './UI/Card';
-import Button from './UI/Button';
+import Card from '../UI/Card';
+import Button from '../UI/Button';
 
 function ProjectForm(props) {
   const [formData, setFormData] = useState({
@@ -45,7 +45,7 @@ function ProjectForm(props) {
 
   return (
     <section className="form">
-      {/* {user && ( */}
+      {!user && <p>Form is disabled. Please login to activate form.</p>}
       <Card>
         <form onSubmit={onSubmit}>
           <div className="form-group">

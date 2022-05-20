@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FaUser } from 'react-icons/fa';
 import { register, reset } from '../features/auth/authSlice';
-import Spinner from '../component/LoadingSpinner';
+import Spinner from '../component/UI/LoadingSpinner';
 import Card from '../component/UI/Card';
 import Button from '../component/UI/Button';
 

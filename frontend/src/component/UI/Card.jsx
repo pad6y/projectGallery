@@ -1,6 +1,6 @@
 import styles from './Card.module.css';
 
-function Card({ heading, projectHead, children }) {
+function Card({ heading, projectHead, children, className }) {
   let content;
 
   if (heading)
@@ -22,7 +22,7 @@ function Card({ heading, projectHead, children }) {
     );
 
   return (
-    <div className={styles.card}>
+    <div className={`${styles.card} ${className}`}>
       {!heading && !projectHead && (
         <div className={styles.card_content}>{children}</div>
       )}

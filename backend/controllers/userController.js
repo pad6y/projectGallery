@@ -4,6 +4,20 @@ const asyncHandler = require('express-async-handler');
 
 const User = require('../models/userModel');
 
+// @Desc Get all user
+// @route Get /api/admin/allUsers
+// @access public
+const getAllUsers = asyncHandler(async (req, res) => {
+  const allUser = await User.find();
+
+  if (!allUser) {
+    res.status(400);
+    throw new Error('No users found');
+  }
+
+  res.status(200).json(allUser);
+});
+
 // @Desc Register new user
 // @route POST /api/admin
 // @access public
@@ -79,4 +93,4 @@ const generateToken = (id) => {
   });
 };
 
-module.exports = { registerUser, userDetail, loginUser };
+module.exports = { getAllUsers, registerUser, userDetail, loginUser };

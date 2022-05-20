@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { getProjects, reset } from '../features/projects/projectSlice';
 
-import ProjectItem from '../component/ProjectItem';
-import LoadingSpinner from '../component/LoadingSpinner';
+import ProjectItem from '../component/ProjectComponents/ProjectItem';
+import LoadingSpinner from '../component/UI/LoadingSpinner';
 
 function Dashboard() {
   // const navigate = useNavigate();

@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
+:root {
+  --primary-purple: rgb(102, 68, 236);
+  --primary-purple-medium: rgb(100, 78, 180);
+  --primary-purple-light: rgb(178, 169, 212);
+
+  --text-light: rgb(251, 249, 249);
+  --text-grey-light: rgb(208, 207, 207);
+  --text-grey-dark: rgb(71, 71, 71);
+  --text-black: rgb(38, 38, 38);
+
+  --btn-danger: rgb(222, 20, 20);
+  --btn-warning: rgb(229, 155, 18);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +27,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #000;
+  color: var(--text-black);
 }
 
 p {
@@ -55,16 +69,19 @@ h3 {
 }
 
 .mr {
-  margin-right: 1.5rem;
+  margin-right: 2.4rem;
 }
 
 .mb {
   margin-bottom: 4rem;
 }
+.small_mb {
+  margin-bottom: 2rem;
+}
 
 .border_b {
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--text-grey-light);
 }
 
 .header {
@@ -72,7 +89,7 @@ h3 {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid var(--text-grey-light);
   margin-bottom: 1rem;
 }
 

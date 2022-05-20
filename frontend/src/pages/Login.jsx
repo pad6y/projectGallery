@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { login, reset } from '../features/auth/authSlice';
-import LoadingSpinner from '../component/LoadingSpinner';
+import LoadingSpinner from '../component/UI/LoadingSpinner';
 import Card from '../component/UI/Card';
 import Button from '../component/UI/Button';
 

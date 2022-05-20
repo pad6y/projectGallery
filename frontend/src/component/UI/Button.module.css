@@ -1,9 +1,9 @@
 .btn {
   padding: 10px 20px;
-  border: 1px solid #000;
+  border: 1px solid var(--text-black);
   border-radius: 2px;
-  background: #000;
-  color: #fff;
+  background: var(--text-black);
+  color: var(--text-light);
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
@@ -19,39 +19,45 @@
 }
 
 .btn_reverse {
-  background: #fff;
-  color: #000;
+  background: var(--text-light);
+  color: var(--text-black);
 }
 
 .btn_reverse:hover {
-  background: #000;
-  color: #fff;
+  background: var(--text-black);
+  color: var(--text-light);
 }
 
 .btn_block {
   width: 100%;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .btn:hover {
-  background: #fff;
-  color: #000;
+  background: var(--text-light);
+  color: var(--text-black);
 }
 
 .delete {
-  background-color: red;
-  border: 1px solid red;
+  background-color: var(--btn-danger);
+  border: 1px solid var(--btn-danger);
 }
 
 .delete:hover {
-  color: red;
+  color: var(--btn-danger);
 }
 
 .edit {
-  background-color: orange;
-  border: 1px solid orange;
+  background-color: var(--btn-warning);
+  border: 1px solid var(--btn-warning);
 }
 
 .edit:hover {
-  color: orange;
+  color: var(--btn-warning);
+}
+
+.disabled {
+  background-color: var(--text-grey-light);
+  color: var(--text-grey-dark);
+  border: none;
 }

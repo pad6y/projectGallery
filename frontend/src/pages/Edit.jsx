@@ -1,4 +1,4 @@
-import EditProjectForm from '../component/EditProjectForm';
+import EditProjectForm from '../component/ProjectComponents/EditProjectForm';
 
 function Edit() {
   return (

@@ -5,11 +5,11 @@ import {
   editProject,
   getProject,
   reset,
-} from '../features/projects/projectSlice';
+} from '../../features/projects/projectSlice';
 import { toast } from 'react-toastify';
-import Card from './UI/Card';
-import Button from './UI/Button';
-import LoadingSpinner from '../component/LoadingSpinner';
+import Card from '../UI/Card';
+import Button from '../UI/Button';
+import LoadingSpinner from '../UI/LoadingSpinner';
 
 function EditProjectForm() {
   const { user } = useSelector((state) => state.auth);

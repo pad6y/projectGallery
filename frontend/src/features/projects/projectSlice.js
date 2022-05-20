@@ -123,7 +123,7 @@ export const deleteProject = createAsyncThunk(
 );
 
 export const projectSlice = createSlice({
-  name: 'project',
+  name: 'projects',
   initialState,
   reducers: {
     reset: (state) => initialState,

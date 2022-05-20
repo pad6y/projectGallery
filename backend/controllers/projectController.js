@@ -3,9 +3,9 @@ const asyncHandler = require('express-async-handler');
 const Project = require('../models/projectModel');
 const User = require('../models/userModel');
 
-// @Desc Get projects
+// @Desc Get app owners projects
 // @route GET /api/projects
-// @access private
+// @access public
 const getProjects = asyncHandler(async (req, res) => {
   const owner = await User.findOne({ email: process.env.MY_ACC });
 
@@ -15,15 +15,20 @@ const getProjects = asyncHandler(async (req, res) => {
 
   res.status(200).json(projects);
 });
+
+// @Desc Get users projects
+// @route GET /api/projects/:userId/user
+// @access private
 const getUserProjects = asyncHandler(async (req, res) => {
   const user = req.params.userId;
-  console.log(user);
+
   const userProjects = await Project.find({ user: user });
-  console.log(userProjects);
+
   res.status(200).json(userProjects);
 });
+
 // @Desc Get specific project
-// @route GET /api/projects
+// @route GET /api/projects/:id
 // @access private
 const getProject = asyncHandler(async (req, res) => {
   const project = await Project.findOne({ _id: req.params.id });

@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { userProjects, reset } from '../features/projects/projectSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import ProjectItem from '../component/ProjectItem';
-import LoadingSpinner from '../component/LoadingSpinner';
+import ProjectItem from '../component/ProjectComponents/ProjectItem';
+import LoadingSpinner from '../component/UI/LoadingSpinner';
 
 function UserProjects() {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ function UserProjects() {
   return (
     <>
       <section className="heading">
-        <h3 className="border_b">Welcome {user.name}'s Project's Gallery</h3>
+        <h3 className="border_b">Welcome back {user.name.split(' ')[0]}</h3>
       </section>
 
       <section className="content">

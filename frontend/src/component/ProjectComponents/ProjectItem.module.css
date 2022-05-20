@@ -1,0 +1,17 @@
+.description {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.date {
+  color: var(--text-grey-light);
+  font-size: 0.6rem;
+  margin-top: 0.8rem;
+  margin-right: 0.2rem;
+  text-align: right;
+}
+
+.btn_container {
+  display: grid;
+  gap: 0.7rem;
+}

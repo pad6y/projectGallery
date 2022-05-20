@@ -7,11 +7,12 @@ const {
   updateProject,
   deleteProject,
 } = require('../controllers/projectController');
+
 const { protect, checkPermission } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-//Get all projects, allows logged in users to create
+//Get app owners projects, allows logged in users to create
 router.route('/').get(getProjects).post(protect, createProject);
 
 //Get specific project

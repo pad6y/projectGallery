@@ -1,0 +1,17 @@
+.card_head_img {
+  position: absolute;
+  top: 13%;
+  left: 8%;
+  height: 5.5rem;
+  width: 5.5rem;
+  padding: 0.2rem;
+  border-radius: 50%;
+  border: 3px solid var(--primary-purple-light);
+}
+
+.date {
+  font-size: 0.8rem;
+  text-align: right;
+  margin: 1.5rem 0.2rem 0.5rem 0;
+  color: var(--text-grey-dark);
+}

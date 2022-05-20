@@ -6,8 +6,8 @@
 }
 
 .card_heading {
-  background: rgb(38, 38, 38);
-  color: white;
+  background: var(--text-black);
+  color: var(--text-light);
   padding: 1.6rem 0;
   margin-bottom: 1.5rem;
   letter-spacing: 0.2rem;
@@ -17,8 +17,8 @@
 .project {
   background-image: linear-gradient(
     to right,
-    rgb(100, 78, 180),
-    rgb(102, 68, 236)
+    var(--primary-purple-medium),
+    var(--primary-purple)
   );
   margin-bottom: 0;
 }
