@@ -79,11 +79,22 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-// @Desc Get User Data
+// @Desc Get Logged in User Data
+// @route GET /api/admin/me
+// @access private
+const loginUserDetail = asyncHandler(async (req, res) => {
+  res.status(200).json(req.user);
+});
+// @Desc Get Logged in User Data
 // @route GET /api/admin/me
 // @access private
 const userDetail = asyncHandler(async (req, res) => {
-  res.status(200).json(req.user);
+  const foundUser = await User.findOne({ _id: req.params.userId }).select([
+    '-password',
+    '-updatedAt',
+  ]);
+
+  res.status(200).json(foundUser);
 });
 
 //Generate JWT
@@ -93,4 +104,10 @@ const generateToken = (id) => {
   });
 };
 
-module.exports = { getAllUsers, registerUser, userDetail, loginUser };
+module.exports = {
+  getAllUsers,
+  registerUser,
+  userDetail,
+  loginUser,
+  loginUserDetail,
+};

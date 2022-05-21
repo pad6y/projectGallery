@@ -10,6 +10,7 @@ function Users() {
   const { users, isError, isLoading, message } = useSelector(
     (state) => state.users
   );
+  const { user: authUser } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (isError) {
@@ -25,11 +26,13 @@ function Users() {
     return <LoadingSpinner />;
   }
 
+  const otherUsers = users.filter((user) => user._id !== authUser._id);
+
   return (
     <div className="content">
       <h1 className="mb">Users</h1>
       <div className="projects">
-        {users.map((user) => (
+        {otherUsers.map((user) => (
           <UsersCard key={user._id} user={user} />
         ))}
       </div>

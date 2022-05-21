@@ -24,7 +24,7 @@ function NavBar() {
               <Link to="/create">CREATE</Link>
             </li>
             <li className={styles.nav_item}>
-              <Link to="/myprojects">MY PROJECTS</Link>
+              <Link to={`/userprojects/${user._id}`}>MY PROJECTS</Link>
             </li>
           </>
         )}

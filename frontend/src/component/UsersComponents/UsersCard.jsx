@@ -1,4 +1,5 @@
-//Implement images and users page/////////
+import { useNavigate } from 'react-router-dom';
+
 import Card from '../UI/Card';
 import Button from '../UI/Button';
 
@@ -6,11 +7,12 @@ import styles from './UsersCard.module.css';
 
 function UsersCard(props) {
   const { name, createdAt, _id } = props.user;
+  const navigate = useNavigate();
 
   const date = new Date(createdAt).toLocaleString('en-GB').split(',')[0];
 
   const viewHandler = () => {
-    console.log(_id);
+    navigate(`/userprojects/${_id}`);
   };
 
   return (

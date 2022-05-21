@@ -24,7 +24,7 @@ function App() {
             <Route path="/create" element={<Create />} />
             <Route path="/blog" element={<Unavailable />} />
             <Route path="/:id/edit" element={<Edit />} />
-            <Route path="/myprojects" element={<UserProjects />} />
+            <Route path="/userprojects/:userID" element={<UserProjects />} />
           </Route>
         </Routes>
       </Router>

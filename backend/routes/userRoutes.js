@@ -3,6 +3,7 @@ const router = express.Router();
 const {
   registerUser,
   loginUser,
+  loginUserDetail,
   userDetail,
   getAllUsers,
 } = require('../controllers/userController');
@@ -13,7 +14,9 @@ router.post('/', registerUser);
 //Login user
 router.post('/login', loginUser);
 //Get logged in user details
-router.get('/user', protect, userDetail);
+router.get('/user', protect, loginUserDetail);
+//Get specific user
+router.get('/user/:userId', userDetail);
 //Get all users
 router.get('/allusers', getAllUsers);
 

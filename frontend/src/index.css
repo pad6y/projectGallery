@@ -187,3 +187,9 @@ h3 {
   display: block;
   margin: 0 0 5px 3px;
 }
+
+.name {
+  text-transform: capitalize;
+  text-decoration: underline;
+  color: var(--primary-purple-medium);
+}
