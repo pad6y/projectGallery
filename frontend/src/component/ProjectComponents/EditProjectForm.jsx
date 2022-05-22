@@ -12,13 +12,16 @@ import Button from '../UI/Button';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
 function EditProjectForm() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const editProjectId = useParams().id;
+  const [titleErr, setTitleErr] = useState('');
+  const [descErr, setDescErr] = useState('');
+
   const { user } = useSelector((state) => state.auth);
   const { project, isLoading, isError, message } = useSelector(
     (state) => state.projects
   );
-  const editProjectId = useParams().id;
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     user: '',
@@ -49,6 +52,8 @@ function EditProjectForm() {
   const { title, description, git_url, url } = formData;
 
   const onChange = (e) => {
+    if (title.length > 0) setTitleErr('');
+    if (description.length > 0) setDescErr('');
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
@@ -57,17 +62,23 @@ function EditProjectForm() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(editProject(formData));
-    dispatch(reset());
-    setFormData(() => ({
-      user: '',
-      title: '',
-      description: '',
-      git_url: '',
-      url: '',
-    }));
 
-    navigate('/myprojects');
+    if (title === '') setTitleErr('Must provide a name');
+    if (description === '') setDescErr('Must provide description');
+
+    if (title !== '' && description !== '') {
+      dispatch(editProject(formData));
+      dispatch(reset());
+      setFormData(() => ({
+        user: '',
+        title: '',
+        description: '',
+        git_url: '',
+        url: '',
+      }));
+
+      navigate(`/userprojects/${user._id}`);
+    }
   };
 
   return (
@@ -77,14 +88,16 @@ function EditProjectForm() {
           <form onSubmit={onSubmit}>
             <div className="form-group">
               <input
-                type="text"
                 className="form-control"
+                autoFocus
+                type="text"
                 placeholder="Enter project name"
                 id="title"
                 name="title"
                 value={title}
                 onChange={onChange}
               />
+              {titleErr && <p id="error">{titleErr}</p>}
             </div>
             <div className="form-group">
               <input
@@ -96,6 +109,7 @@ function EditProjectForm() {
                 value={description}
                 onChange={onChange}
               />
+              {descErr && <p id="error">{descErr}</p>}
             </div>
             <div className="form-group">
               <input

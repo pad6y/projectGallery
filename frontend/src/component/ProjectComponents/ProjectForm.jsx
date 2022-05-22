@@ -6,7 +6,13 @@ import { createProject, reset } from '../../features/projects/projectSlice';
 import Card from '../UI/Card';
 import Button from '../UI/Button';
 
-function ProjectForm(props) {
+function ProjectForm() {
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [titleErr, setTitleErr] = useState('');
+  const [descErr, setDescErr] = useState('');
+
   const [formData, setFormData] = useState({
     user: '',
     title: '',
@@ -17,11 +23,9 @@ function ProjectForm(props) {
 
   const { title, description, git_url, url } = formData;
 
-  const { user } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   const onChange = (e) => {
+    if (title.length > 0) setTitleErr('');
+    if (description.length > 0) setDescErr('');
     setFormData((prevState) => ({
       ...prevState,
       user: user._id,
@@ -31,16 +35,24 @@ function ProjectForm(props) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(createProject(formData));
-    dispatch(reset());
-    setFormData(() => ({
-      user: '',
-      title: '',
-      description: '',
-      git_url: '',
-      url: '',
-    }));
-    navigate('/myprojects');
+
+    if (title === '') setTitleErr('Must provide a name');
+    if (description === '') setDescErr('Must provide description');
+
+    if (title !== '' && description !== '') {
+      dispatch(createProject(formData));
+      dispatch(reset());
+      setTitleErr('');
+      setDescErr('');
+      setFormData(() => ({
+        user: '',
+        title: '',
+        description: '',
+        git_url: '',
+        url: '',
+      }));
+      navigate(`/userprojects/${user._id}`);
+    }
   };
 
   return (
@@ -50,8 +62,9 @@ function ProjectForm(props) {
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <input
-              type="text"
               className="form-control"
+              autoFocus
+              type="text"
               placeholder="Enter project name"
               id="title"
               name="title"
@@ -59,6 +72,7 @@ function ProjectForm(props) {
               onChange={onChange}
               disabled={!user ? true : false}
             />
+            {titleErr && <p id="error">{titleErr}</p>}
           </div>
           <div className="form-group">
             <input
@@ -71,6 +85,7 @@ function ProjectForm(props) {
               onChange={onChange}
               disabled={!user ? true : false}
             />
+            {descErr && <p id="error">{descErr}</p>}
           </div>
           <div className="form-group">
             <input
