@@ -30,7 +30,7 @@ function UsersCard(props) {
       {image !== '' && (
         <img
           className={styles.card_head_img}
-          src={`http://localhost:5000/${image}`}
+          src={`${process.env.REACT_APP_BACKEND_URL}/${image}`}
           alt="avator"
         />
       )}

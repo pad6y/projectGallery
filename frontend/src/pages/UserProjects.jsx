@@ -45,7 +45,7 @@ function UserProjects() {
     <>
       {user && (
         <section className={`heading ${styles.dash_container}`}>
-          {user._id === loggedInUser._id ? (
+          {loggedInUser && loggedInUser._id === user._id ? (
             <h3 className={styles.text}>
               Welcome back{' '}
               <span className="name">{user.name.split(' ')[0]}</span> these are
@@ -61,14 +61,15 @@ function UserProjects() {
       )}
 
       <section className="content">
-        {projects.length > 0 && !isLoading && (
+        {projects.length === 0 ? (
+          <h3>Currently no projects to view</h3>
+        ) : (
           <div className="projects">
             {projects.map((project) => (
               <ProjectItem key={project._id} project={project} />
             ))}
           </div>
         )}
-        {projects.length === 0 && <h3>Currently no projects to view</h3>}
       </section>
     </>
   );
