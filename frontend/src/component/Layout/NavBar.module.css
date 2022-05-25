@@ -1,5 +1,6 @@
 .nav_container {
   display: flex;
+  max-width: 960px;
   justify-content: flex-end;
   background-image: linear-gradient(
     to left,
@@ -7,7 +8,8 @@
     var(--primary-purple)
   );
   padding: 1rem 0;
-  margin-bottom: 2rem;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--text-grey-light);
 }
 
 nav ul:last-child {

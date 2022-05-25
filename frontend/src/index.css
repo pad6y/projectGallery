@@ -54,14 +54,8 @@ h3 {
   max-width: 960px;
   min-height: 90vh;
   margin: 0 auto;
-  padding: 0 20px;
   text-align: center;
-}
-
-@media (max-width: 540px) {
-  .container {
-    padding: 0;
-  }
+  background-color: var(--text-light);
 }
 
 .center {
@@ -96,13 +90,6 @@ h3 {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 50px;
-  padding: 0 20px;
-}
-
-@media (max-width: 412px) {
-  .heading {
-    padding: 0;
-  }
 }
 
 .heading p {
@@ -132,6 +119,10 @@ h3 {
 .users {
   display: grid;
   gap: 2rem;
+}
+
+.users:last-child {
+  padding-bottom: 3rem;
 }
 
 .form {

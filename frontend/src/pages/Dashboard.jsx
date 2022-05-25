@@ -33,7 +33,7 @@ function Dashboard() {
   return (
     <>
       <section className={`heading ${styles.dash_container}`}>
-        <h2 className={styles.text}>Welcome Pad6y's Project Gallery</h2>
+        <h2 className={styles.text}>Welcome to Pad6y's Project Gallery</h2>
       </section>
 
       <section className="content">

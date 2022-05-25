@@ -1,16 +1,11 @@
 .header {
   display: flex;
   justify-content: space-between;
+  max-width: 960px;
   align-items: center;
-  padding: 1rem 8.6rem;
+  padding: 1rem 1rem;
   border-bottom: 1px solid var(--text-grey-light);
-  margin-bottom: 1rem;
-}
-
-@media (max-width: 710px) {
-  .header {
-    padding: 1rem 1rem;
-  }
+  margin: 0 auto 1rem;
 }
 
 .header ul {
