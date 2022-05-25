@@ -12,11 +12,15 @@ function Register() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    image: '',
+    bio: '',
     password: '',
     passwordConfirm: '',
   });
 
-  const { name, email, password, passwordConfirm } = formData;
+  // const [loadedImage, setLoadedImage] = useState('');
+
+  const { name, email, bio, password, passwordConfirm } = formData;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -42,6 +46,13 @@ function Register() {
       ...prevState,
       [e.target.name]: e.target.value,
     }));
+
+    if (e.target.files && e.target.files.length === 1) {
+      setFormData((prevState) => ({
+        ...prevState,
+        image: e.target.files[0],
+      }));
+    }
   };
 
   const onSubmit = (e) => {
@@ -49,14 +60,17 @@ function Register() {
 
     if (password !== passwordConfirm) {
       toast.error('Passwords do not match');
-    } else {
-      const userData = {
-        name,
-        email,
-        password,
-      };
-      dispatch(register(userData));
     }
+
+    const convertFormData = new FormData();
+    convertFormData.append('name', formData.name);
+    convertFormData.append('email', formData.email);
+    convertFormData.append('image', formData.image);
+    convertFormData.append('bio', formData.bio);
+    convertFormData.append('password', formData.password);
+    convertFormData.append('passwordConfirm', formData.passwordConfirm);
+
+    dispatch(register(convertFormData));
   };
 
   if (isLoading) {
@@ -95,6 +109,28 @@ function Register() {
                 name="email"
                 value={email}
                 onChange={onChange}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="file"
+                className="form-control"
+                id="image"
+                name="image"
+                accepts=".jpg,.png,.jpeg"
+                onChange={onChange}
+              />
+            </div>
+            <div className="form-group">
+              <textarea
+                type="text"
+                className="form-control"
+                placeholder="Enter your bio"
+                id="bio"
+                name="bio"
+                value={bio}
+                onChange={onChange}
+                rows="4"
               />
             </div>
             <div className="form-group">

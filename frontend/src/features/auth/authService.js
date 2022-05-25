@@ -5,7 +5,11 @@ const API_URL = '/api/admin/';
 
 // Register user
 const register = async (userData) => {
-  const response = await axios.post(API_URL, userData);
+  const response = await axios.post(API_URL, userData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
 
   if (response.data) {
     toast.success(`You have successfully registered ${response.data.name}`);
@@ -14,6 +18,7 @@ const register = async (userData) => {
 
   return response.data;
 };
+
 // Login user
 const login = async (userData) => {
   const response = await axios.post(`${API_URL}login`, userData);
@@ -25,6 +30,7 @@ const login = async (userData) => {
 
   return response.data;
 };
+
 //Log out user
 const logout = () => {
   localStorage.removeItem('user');

@@ -14,7 +14,7 @@ import LoadingSpinner from '../UI/LoadingSpinner';
 function EditProjectForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const editProjectId = useParams().id;
+  const { id: editProjectId } = useParams();
   const [titleErr, setTitleErr] = useState('');
   const [descErr, setDescErr] = useState('');
 
@@ -100,7 +100,7 @@ function EditProjectForm() {
               {titleErr && <p id="error">{titleErr}</p>}
             </div>
             <div className="form-group">
-              <input
+              <textarea
                 type="text"
                 className="form-control"
                 placeholder="Enter project description"

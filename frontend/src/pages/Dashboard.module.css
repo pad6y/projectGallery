@@ -1,0 +1,25 @@
+.dash_container {
+  display: flex;
+  height: 8rem;
+  background-image: linear-gradient(
+    to bottom right,
+    white,
+    var(--primary-purple-light),
+    var(--primary-purple-medium),
+    var(--primary-purple),
+    var(--primary-purple-medium),
+    var(--primary-purple-light),
+    white
+  );
+  justify-content: center;
+  align-items: center;
+}
+
+.dash_container h2.text,
+h3.text {
+  color: var(--primary-purple-light);
+  /* padding: 40px; */
+  filter: drop-shadow(-2px -1px 0px rgba(137, 136, 136, 0.8))
+    drop-shadow(5px 5px 5px rgba(1, 1, 1, 0.7))
+    drop-shadow(15px 15px 15px rgba(0, 0, 0, 0.6));
+}

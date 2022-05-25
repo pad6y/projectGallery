@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { getProjects, reset } from '../features/projects/projectSlice';
 
 import ProjectItem from '../component/ProjectComponents/ProjectItem';
 import LoadingSpinner from '../component/UI/LoadingSpinner';
+import styles from './Dashboard.module.css';
 
 function Dashboard() {
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { projects, isLoading, isError, message } = useSelector(
@@ -33,8 +32,8 @@ function Dashboard() {
 
   return (
     <>
-      <section className="heading">
-        <h1 className="border_b">Welcome Pad6y's Project Gallery</h1>
+      <section className={`heading ${styles.dash_container}`}>
+        <h2 className={styles.text}>Welcome Pad6y's Project Gallery</h2>
       </section>
 
       <section className="content">

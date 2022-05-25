@@ -8,9 +8,10 @@ const {
   getAllUsers,
 } = require('../controllers/userController');
 const { protect } = require('../middleware/authMiddleware');
+const imageUpload = require('../middleware/imageUpload');
 
 //Register user
-router.post('/', registerUser);
+router.post('/', imageUpload.single('image'), registerUser);
 //Login user
 router.post('/login', loginUser);
 //Get logged in user details

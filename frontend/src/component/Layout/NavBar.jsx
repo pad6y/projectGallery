@@ -15,9 +15,9 @@ function NavBar() {
         <li className={styles.nav_item}>
           <Link to="/users">USERS</Link>
         </li>
-        <li className={styles.nav_item}>
+        {/* <li className={styles.nav_item}>
           <Link to="/blog">BLOG</Link>
-        </li>
+        </li> */}
         {user && (
           <>
             <li className={styles.nav_item}>

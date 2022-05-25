@@ -7,8 +7,10 @@ import { toast } from 'react-toastify';
 import ProjectItem from '../component/ProjectComponents/ProjectItem';
 import LoadingSpinner from '../component/UI/LoadingSpinner';
 
+import styles from './Dashboard.module.css';
+
 function UserProjects() {
-  const userID = useParams().userID;
+  const { userID } = useParams();
   const dispatch = useDispatch();
   const { projects, isLoading, isError, message } = useSelector(
     (state) => state.projects
@@ -42,15 +44,15 @@ function UserProjects() {
   return (
     <>
       {user && (
-        <section className="heading">
+        <section className={`heading ${styles.dash_container}`}>
           {user._id === loggedInUser._id ? (
-            <h3 className="border_b">
+            <h3 className={styles.text}>
               Welcome back{' '}
               <span className="name">{user.name.split(' ')[0]}</span> these are
               your projects
             </h3>
           ) : (
-            <h3 className="border_b">
+            <h3 className={styles.text}>
               Welcome to <span className="name">{user.name.split(' ')[0]}</span>{' '}
               project's
             </h3>
@@ -59,7 +61,7 @@ function UserProjects() {
       )}
 
       <section className="content">
-        {projects.length > 0 && (
+        {projects.length > 0 && !isLoading && (
           <div className="projects">
             {projects.map((project) => (
               <ProjectItem key={project._id} project={project} />

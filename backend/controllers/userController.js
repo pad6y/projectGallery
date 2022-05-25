@@ -22,7 +22,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
 // @route POST /api/admin
 // @access public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, image, bio, password } = req.body;
 
   if (!name || !email || !password) {
     res.status(400);
@@ -37,14 +37,29 @@ const registerUser = asyncHandler(async (req, res) => {
   //hash password
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
+
+  let imagePath;
+  if (!req.file) {
+    imagePath = '';
+  } else {
+    imagePath = req.file.path;
+  }
   //Create user
-  const newUser = await User.create({ name, email, password: hashedPassword });
+  const newUser = await User.create({
+    name,
+    email,
+    image: imagePath,
+    bio,
+    password: hashedPassword,
+  });
 
   if (newUser) {
     res.status(201).json({
       _id: newUser._id,
       name: newUser.name,
       email: newUser.email,
+      image: newUser.image,
+      bio: newUser.bio,
       token: generateToken(newUser._id),
     });
   } else {

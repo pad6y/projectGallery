@@ -42,8 +42,7 @@ function ProjectForm() {
     if (title !== '' && description !== '') {
       dispatch(createProject(formData));
       dispatch(reset());
-      setTitleErr('');
-      setDescErr('');
+
       setFormData(() => ({
         user: '',
         title: '',
@@ -75,7 +74,7 @@ function ProjectForm() {
             {titleErr && <p id="error">{titleErr}</p>}
           </div>
           <div className="form-group">
-            <input
+            <textarea
               type="text"
               className="form-control"
               placeholder="Enter project description"
@@ -84,6 +83,7 @@ function ProjectForm() {
               value={description}
               onChange={onChange}
               disabled={!user ? true : false}
+              rows="4"
             />
             {descErr && <p id="error">{descErr}</p>}
           </div>
