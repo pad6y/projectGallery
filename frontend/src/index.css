@@ -109,6 +109,10 @@ h3 {
   }
 }
 
+.projects:last-child {
+  padding-bottom: 3rem;
+}
+
 .project {
   background-color: #f4f4f4;
   margin: 10px 0;
