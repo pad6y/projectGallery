@@ -1,6 +1,5 @@
 .nav_container {
   display: flex;
-  max-width: 960px;
   justify-content: flex-end;
   background-image: linear-gradient(
     to left,

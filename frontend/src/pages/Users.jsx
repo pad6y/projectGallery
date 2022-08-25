@@ -49,7 +49,7 @@ function Users() {
         {otherUsers.length === 0 && (
           <div className="">No other users found!</div>
         )}
-        <div className="users">
+        <div className={`users ${styles.width}`}>
           {otherUsers.map((user) => (
             <UsersCard key={user._id} user={user} />
           ))}

@@ -12,7 +12,7 @@
 
 .dash_container h2.text,
 h3.text {
-  color: var(--primary-purple-light);
+  color: var(--text-light);
   /* padding: 40px; */
   filter: drop-shadow(-2px -1px 0px rgba(137, 136, 136, 0.8))
     drop-shadow(5px 5px 5px rgba(1, 1, 1, 0.7))
@@ -23,4 +23,9 @@ h3.text {
   .text {
     font-size: 2rem;
   }
+}
+
+.width {
+  max-width: 40rem;
+  margin: 0 auto;
 }
