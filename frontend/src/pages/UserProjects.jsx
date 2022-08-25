@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { userProjects, reset } from '../features/projects/projectSlice';
-// import { getUser } from '../features/users/userSlice';
+import { getUser } from '../features/users/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import ProjectItem from '../component/ProjectComponents/ProjectItem';
@@ -29,7 +29,7 @@ function UserProjects() {
     if (isError || userError) {
       toast.error(message || userMsg);
     }
-    // dispatch(getUser(userID));
+    dispatch(getUser(userID));
     dispatch(userProjects(userID));
 
     return () => {
@@ -44,12 +44,11 @@ function UserProjects() {
   return (
     <>
       {user && (
-        <section className={`heading ${styles.dash_container}`}>
+        <header className={`heading ${styles.dash_container}`}>
           {loggedInUser && loggedInUser._id === user._id ? (
             <h3 className={styles.text}>
-              Welcome back{' '}
-              <span className="name">{user.name.split(' ')[0]}</span> these are
-              your projects
+              Welcome back <span className="name">{loggedInUser.name}</span>{' '}
+              these are your projects
             </h3>
           ) : (
             <h3 className={styles.text}>
@@ -57,9 +56,8 @@ function UserProjects() {
               project's
             </h3>
           )}
-        </section>
+        </header>
       )}
-
       <section className="content">
         {projects.length === 0 && <h3>Currently no projects to view</h3>}
 
