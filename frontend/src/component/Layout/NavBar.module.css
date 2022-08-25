@@ -13,7 +13,7 @@
 }
 
 nav ul:last-child {
-  padding-right: 7.5rem;
+  padding-right: 1.5rem;
 }
 
 @media (max-width: 768px) {

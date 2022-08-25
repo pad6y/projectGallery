@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { userProjects, reset } from '../features/projects/projectSlice';
-import { getUser } from '../features/users/userSlice';
+// import { getUser } from '../features/users/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import ProjectItem from '../component/ProjectComponents/ProjectItem';
@@ -29,7 +29,7 @@ function UserProjects() {
     if (isError || userError) {
       toast.error(message || userMsg);
     }
-    dispatch(getUser(userID));
+    // dispatch(getUser(userID));
     dispatch(userProjects(userID));
 
     return () => {
@@ -61,9 +61,9 @@ function UserProjects() {
       )}
 
       <section className="content">
-        {projects.length === 0 ? (
-          <h3>Currently no projects to view</h3>
-        ) : (
+        {projects.length === 0 && <h3>Currently no projects to view</h3>}
+
+        {projects.length > 0 && (
           <div className="projects">
             {projects.map((project) => (
               <ProjectItem key={project._id} project={project} />

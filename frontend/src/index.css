@@ -147,7 +147,7 @@ h3 {
 
 .content {
   width: 90%;
-  margin: 0 auto;
+  margin: 2rem auto;
 }
 
 @media (min-width: 910px) {

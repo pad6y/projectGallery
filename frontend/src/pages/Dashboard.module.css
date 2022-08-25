@@ -18,3 +18,9 @@ h3.text {
     drop-shadow(5px 5px 5px rgba(1, 1, 1, 0.7))
     drop-shadow(15px 15px 15px rgba(0, 0, 0, 0.6));
 }
+
+@media (max-width: 600px) {
+  .text {
+    font-size: 2rem;
+  }
+}
